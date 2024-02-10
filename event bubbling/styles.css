@@ -1,0 +1,23 @@
+.container{
+    border: 2px solid black;
+    margin: 14px;
+    padding: 14px;
+    background-color: blueviolet;
+}
+.childContainer{
+    border: 2px solid black;
+    margin: 14px;
+    padding: 14px;
+    background-color: brown;
+}
+.child{
+    
+    border: 2px solid black;
+    margin: 14px;
+    padding: 14px;
+    cursor: pointer;
+    background-color: chartreuse;
+}
+#text{
+    text-align: center;
+}

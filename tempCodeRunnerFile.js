@@ -1,0 +1,2 @@
+
+c = factorial(6);

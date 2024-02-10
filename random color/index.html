@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 23px;
+        }
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            border: 2px solid black;
+        }
+        .switch{
+            background-color: yellow;
+        }
+        #btn{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" style="display: flex;">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+        <div class="box">Box 4</div>
+        <div class="box">Box 5</div>
+    </div>
+    <div id="game">
+     <p id = "lives"></p>
+     <p>FIgure out how to win!</p>
+    </div>
+    <button id = "btn">Click to switch!</button>
+    <script src="script.js"></script>
+</body>
+</html>
