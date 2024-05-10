@@ -15,6 +15,17 @@ function decider() {
   }
   return a1;
 }
+
+// Function to get a random key code
+function getRandomKeyCode() {
+  // Define the range of key codes for keys you want to consider
+  const minKeyCode = 65; // Key code for 'A'
+  const maxKeyCode = 90; // Key code for 'Z'
+  
+  // Generate a random key code within the defined range
+  return Math.floor(Math.random() * (maxKeyCode - minKeyCode + 1)) + minKeyCode;
+}
+
 // let decider1 = Math.floor(Math.random() * 5);
 // let decider2 = Math.floor(Math.random() * 5);
 
@@ -78,32 +89,56 @@ function switch1() {
 button.addEventListener("click", ()=>{
   switch1();
 })
+
+// this part of the script is for the game
+
+// Generate a random key code
+const winKeyCode = getRandomKeyCode();
+
+// convert it to the output
+const winKey = String.fromCharCode(winKeyCode);
+
+// Boolean variable to track if the game has been won
+let gameWon = false;
+
+// initialise the number of lives
 let lives = 10;
+
+console.log("This is the winning key: "+winKey);
+
 document.addEventListener("keydown",(e)=>{
   console.log(typeof e.key);
-  if (lives>=20){
-    document.getElementById("game").innerHTML="<p><p>You <b>win!</b></p><br></p>"
-    
+  if (gameWon) {
+    return; // Exit the function if the game is already won
   }
-  if (lives<1){
-    document.getElementById("game").innerHTML="<p><p>You <b>lose!</b></p><br></p>"
-    
+  
+  if (lives >= 20-1){
+    document.getElementById("game").innerHTML="<p><p>You <b>win!</b></p><br></p>";
+    // Set gameWon to true to indicate the game has been won
+    gameWon = true;
+    return;
   }
-  else if (e.key !== "ArrowUp" && lives < 20){
+  if (lives <= 1){
+    document.getElementById("game").innerHTML="<p><p>You <b>lose!</b></p><br></p>";
+    // Stop further processing of key events if the player loses
+    document.removeEventListener("keydown");
+    return;
+  }
+  else if (e.key !== winKey && lives < 20){
     lives-= 1;
     // alert("Life down by 1");
     document.getElementById("lives").innerHTML = "Lives: "+lives;
   }
-  else if (e.key === "ArrowUp" && lives < 20){
+  else if (e.key === winKey && lives < 20){
     lives+= 1;
     // alert("Life up by 1");
     document.getElementById("lives").innerHTML = "Lives: "+lives;
   }
-  
-})
-
+});
 
 document.getElementById("lives").innerHTML = "Lives: "+lives;
+
+
 // document.addEventListener(lives,()=>{
   
 // })
