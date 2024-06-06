@@ -6,14 +6,6 @@
 - **Dynamic Styling**: Styles of elements are dynamically modified using JavaScript.
 - **Game Logic**: Player's lives are updated based on key presses, and a win or lose condition is determined.
 
-## Usage
-<p>To use this script, follow these steps:</p>
-
-1. Include the HTML structure in your web page, with necessary elements such as containers, boxes, buttons, and text displays.
-2. Include the script.js file in your HTML document using a <script> tag.
-3. Ensure that your HTML structure has elements with appropriate IDs and classes as referenced in the JavaScript code.
-4. Customize the game logic or styling as needed for your project.
-
 ## How It Works
 - The script starts by hiding the main container element.
 - It defines functions to generate random colors and key codes, and to make decisions for game logic.
@@ -29,4 +21,3 @@
 ![Loss](static/lose.png)
 3. When you win:
 ![Win](static/win.png)
-
