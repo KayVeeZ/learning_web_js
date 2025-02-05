@@ -6,10 +6,12 @@ const red = (a1,b1)=>{
     return a1*b1;
 }
 
-function factorial(number){
+function factorial(number)
+{
     let arr = Array.from(Array(number+1).keys());
     return (arr.slice(1,)).reduce(red);
 }
+
 let c = factorial(num);
 console.log("This is c:",c);
 // let c = [];
