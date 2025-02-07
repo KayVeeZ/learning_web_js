@@ -3,7 +3,7 @@
 Step 1: Run the following commands
 
 ``` 
-npm install -D tailwindcss
+npm install -D tailwindcss@3.4.1
 npx tailwindcss init
 ```
 
