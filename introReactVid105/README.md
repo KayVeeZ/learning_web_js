@@ -4,4 +4,4 @@
 - React uses a virtual DOM to efficiently update the UI which is better than updating content using DOM Manipulation
 - Debugging and maintainance is easy
 
-[How to setup a react only app with vite](https://github.com/your-username/your-repository/blob/main/your-file.md](https://github.com/KayVeeZ/learning_web_js/blob/main/introReactVid105/setup-react-vite.md)
+[How to setup a react only app with vite](https://github.com/KayVeeZ/learning_web_js/blob/main/introReactVid105/setup-react-vite.md)
