@@ -4,11 +4,36 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [showBtn, setshowBtn] = useState(true);
+  const [todos, setTodos] = useState([
+    {
+      title: "Hey",
+      desc: "I am a good todo"
+    },
+    {
+      title: "Hey I am another todo",
+      desc: "I am a good todo too"
+    },
+    {
+      title: "Hey I am a grocery todo",
+      desc: "I am a good todo but I am a grocery todo"
+    },
+
+  ])
+
+  // const Todo = ({todo}) => {
+  //   return (<>
+  //   <div className="m-4 border border-1 border-purple-400">
+  //   <div className="todo">{todo.title}</div>
+  //   <div className="todo">{todo.desc}</div>
+  //   </div>
+  //   </>)
+  // };
 
   return (
     <>
-      <div>
+      <div className='flex'>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -17,9 +42,24 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      {showBtn ? <button>showBtn is true</button> : <button>showBtn is false</button>}
+      {/* {showBtn && <button>showBtn is true</button>} */}
+      {todos.map(todo => {
+        // return <Todo key={todo.title} todo = {todo}/>
+        return (
+        <div key={todo.title} className="m-4 border border-1 border-purple-400">
+          <div className="todo">{todo.title}</div>
+          <div className="todo">{todo.desc}</div>
+        </div>
+        );
+      })};
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => {
+          setCount(count + 1);
+          setshowBtn(!showBtn);
+        }
+        }>
+          count is {count} and showBtn is {showBtn.toString()}
         </button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
@@ -29,7 +69,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
