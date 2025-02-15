@@ -107,8 +107,8 @@ function App() {
             Add a Task
           </h2>
           <div className="flex">
-            <input onChange={handleChange} value={todo} type="text" className='bg-white w-full rounded-full px-5 py-1' />
-            <button onClick={handleSave} disabled={todo.length <= 3} className='mx-2 cursor-pointer bg-violet-800 hover:bg-violet-950 disabled:bg-gray-500 p-4 py-2 text-sm font-bold text-white rounded-full'>Save</button>
+            <input onChange={handleChange} value={todo} type="text" className='bg-violet-50 focus:bg-white rounded-full px-5 py-1 task-input w-[50%] focus:w-[90%] transition-all' />
+            <button onClick={handleSave} disabled={todo.length <= 3} className='absolute right-100 top-46 mx-2 cursor-pointer bg-violet-800 hover:bg-violet-950 disabled:bg-blue-100 p-4 py-2 text-sm font-bold text-white rounded-full transition-all'>Save</button>
           </div>
         </div>
         <input className='my-4' id="show" onChange={toggleFinished} type="checkbox" checked={showFinished} />
@@ -129,8 +129,8 @@ function App() {
                 <div className={item.isCompleted ? "line-through" : ""} >{item.todo}</div>
               </div>
               <div className="buttons flex h-full">
-                <button onClick={(e) => { handleEdit(e, item.id) }} className='cursor-pointer bg-violet-800 hover:bg-violet-950 p-3 py-1 text-sm font-bold text-white rounded-md mx-1'><FaEdit /></button>
-                <button onClick={(e) => { handleDelete(e, item.id) }} className='cursor-pointer bg-violet-800 hover:bg-violet-950 p-3 py-1 text-sm font-bold text-white rounded-md mx-1'><AiFillDelete /></button>
+                <button onClick={(e) => { handleEdit(e, item.id) }} className='cursor-pointer bg-violet-800 hover:bg-violet-950 p-3 py-1 text-sm font-bold text-white rounded-md mx-1 transition-all'><FaEdit /></button>
+                <button onClick={(e) => { handleDelete(e, item.id) }} className='cursor-pointer bg-violet-800 hover:bg-violet-950 p-3 py-1 text-sm font-bold text-white rounded-md mx-1 transition-all'><AiFillDelete /></button>
               </div>
 
             </div>
