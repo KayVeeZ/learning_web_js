@@ -21,7 +21,7 @@ A simple yet powerful To-Do List application built using **Vite**, **React**, an
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/todolist-vite-react.git
+   git clone https://github.com/KayVeeZ/learning_web_js/tree/main/projects/todoListVid114
    ```
 
 2. Navigate to the project directory:
