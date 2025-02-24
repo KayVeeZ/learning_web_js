@@ -26,7 +26,7 @@ A simple yet powerful To-Do List application built using **Vite**, **React**, an
 
 2. Navigate to the project directory:
    ```bash
-   cd todolist-vite-react
+   cd todoListVid114
    ```
 
 3. Install dependencies:
