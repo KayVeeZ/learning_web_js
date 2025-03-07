@@ -108,11 +108,11 @@ function App() {
           </h2>
           <div className="flex">
             <input onChange={handleChange} placeholder="Enter a task..." value={todo} type="text" className='bg-violet-50 focus:bg-white rounded-full px-5 py-1 task-input w-[18%] focus:w-[90%] transition-all' />
-            <button onClick={handleSave} disabled={todo.length <= 3} className='absolute right-100 top-46 mx-2 cursor-pointer bg-violet-800 hover:bg-violet-950 disabled:bg-blue-100 p-4 py-2 text-sm font-bold text-white rounded-full hover:shadow-[0_0_0_2px_#a6a9fd] transition-all'>Save</button>
+            <button onClick={handleSave} disabled={todo.length <= 3} className='mx-2 cursor-pointer bg-violet-800 hover:bg-violet-950 disabled:bg-blue-100 p-4 py-2 text-sm font-bold text-white rounded-full hover:shadow-[0_0_0_2px_#a6a9fd] transition-all'>Save</button>
           </div>
         </div>
-        <input className='my-4' id="show" onChange={toggleFinished} type="checkbox" checked={showFinished} />
-        <label className="mx-2" htmlfor="show">Show Finished</label>
+
+        <div><label className="mx-4" htmlfor="show"><input className='my-4' id="show" onChange={toggleFinished} type="checkbox" checked={showFinished} />{" "}Show Finished</label></div>
         <div className="h-[1px] w-[90%] mx-auto my-2 bg-black opacity-25"></div>
 
         <h2 className='mx-5 text-2xl font-bold'>
