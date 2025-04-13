@@ -9,19 +9,24 @@ const PORT = 8383;
 // Endpoints - HTTP Verbs (methods/actions) and ROutes/Paths
 // the method informs the nature of request and the route is a further subdirectory
 // (basically we request the body of code to respond appropriately, and these locations and/or routes are called endpoints)
-app.get('/', (req, res)=> {
+
+// Type 1- Website endpoints (these endpoints are basically for sending back html and they appear when a user enters a URL into a browser)
+app.get('/', (req, res) => {
     // this is endpoint -1
     console.log('yay, i hit an endpoint', req.method);
     res.sendStatus(201); // 200 series means  success, 400 series means client error, 500 means error on server side
 })
 
 app.get('/dashboard', (req, res) => {
-  console.log('dashboard endpoint hit', req.method);
-  res.send('<h1>hello world-this is html now</h1>');
+    console.log('dashboard endpoint hit', req.method);
+    res.send('<h1>hello world-this is html now</h1><input/>');
 }
 )
 
+// Type 2- API endpoints (non-visual)
+
+
 app.listen(PORT, () => {
-  console.log(`Server has started on: Port ${PORT}`);
+    console.log(`Server has started on: Port ${PORT}`);
 }
 );
