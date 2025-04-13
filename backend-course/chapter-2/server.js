@@ -6,9 +6,10 @@ const express = require('express');
 const app = express();
 const PORT = 8383;
 
-let data = {
-    name: "Kshitij"
-}
+let data = ["Kshitij"]
+
+// middleware
+app.use(express.json())
 
 // Endpoints - HTTP Verbs (methods/actions) and ROutes/Paths
 // the method informs the nature of request and the route is a further subdirectory
@@ -41,9 +42,21 @@ app.get('/dashboard', (req, res) => {
 
 // CRUD-method : Create-post Read-Get Update-put Delete-delete
 
-app.get('/api/data', (re,res) => {
+app.get('/api/data', (req, res) => {
     res.send(data);
 });
+
+app.post('/api/data', (req, res) => {
+    // somebody wants to create a user (for example when they click a sign up button)
+    // the user enters the sign up button after entering their credentials, and their browser is wired up 
+    // to send out a network request to the server to handle that action
+    const newEntry = req.body;
+    console.log(newEntry);
+    data.push(newEntry.name);
+    res.sendStatus(201); // for creating necessary
+
+}
+);
 
 
 app.listen(PORT, () => {
