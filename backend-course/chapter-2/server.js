@@ -19,7 +19,16 @@ app.get('/', (req, res) => {
     // this is endpoint -1
     console.log('yay, i hit an endpoint', req.method);
     // res.sendStatus(201); // 200 series means  success, 400 series means client error, 500 means error on server side
-    res.send('<h1>Homepage</h1>')
+    res.send(`
+        <body style="background: black; color: #20C20E">
+            <h1>
+                DATA:
+            </h1>
+            <p>
+                ${JSON.stringify(data)}
+            </p>
+        </body>
+        `)
 })
 
 app.get('/dashboard', (req, res) => {
@@ -29,6 +38,8 @@ app.get('/dashboard', (req, res) => {
 )
 
 // Type 2- API endpoints (non-visual)
+
+// CRUD-method : Create-post Read-Get Update-put Delete-delete
 
 app.get('/api/data', (re,res) => {
     res.send(data);
