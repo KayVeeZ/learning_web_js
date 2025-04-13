@@ -18,7 +18,7 @@ app.use(express.json())
 // Type 1- Website endpoints (these endpoints are basically for sending back html and they appear when a user enters a URL into a browser)
 app.get('/', (req, res) => {
     // this is endpoint -1
-    console.log('yay, i hit an endpoint', req.method);
+    console.log('User requested home page', req.method);
     // res.sendStatus(201); // 200 series means  success, 400 series means client error, 500 means error on server side
     res.send(`
         <body style="background: black; color: #20C20E">
@@ -26,15 +26,28 @@ app.get('/', (req, res) => {
                 DATA:
             </h1>
             <p>
-                ${JSON.stringify(data)}
+                ${JSON.stringify(data)} <br/>
+                <a href="/dashboard">
+                    Dashboard
+                </a>
             </p>
         </body>
+        <script>console.log("This is my script");</script>
         `)
 })
 
 app.get('/dashboard', (req, res) => {
     console.log('dashboard endpoint hit', req.method);
-    res.send('<h1>Dashboard</h1>');
+    res.send(`
+        <body style="background: black; color: #20C20E">
+            <h1>
+                Dashboard
+            </h1><br/>
+            <a href="/">
+                Home
+            </a>
+        </body>
+        `);
 }
 )
 
@@ -43,7 +56,7 @@ app.get('/dashboard', (req, res) => {
 // CRUD-method : Create-post Read-Get Update-put Delete-delete
 
 app.get('/api/data', (req, res) => {
-    res.send(data);
+    res.status(599).send(data);
 });
 
 app.post('/api/data', (req, res) => {
@@ -55,6 +68,14 @@ app.post('/api/data', (req, res) => {
     data.push(newEntry.name);
     res.sendStatus(201); // for creating necessary
 
+}
+);
+
+app.delete('/api/data', (req, res) => {
+    const ele = data[data.length - 1];
+    data.pop();
+    console.log(`we deleted ${ele} from the data`);
+    res.sendStatus(203);
 }
 );
 
