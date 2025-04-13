@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 const PORT = 8383;
 
-// HTTP Verbs and ROutes/Paths
+// Endpoints - HTTP Verbs (methods/actions) and ROutes/Paths
 // the method informs the nature of request and the route is a further subdirectory
 // (basically we request the body of code to respond appropriately, and these locations and/or routes are called endpoints)
 app.get('/', (req, res)=> {
