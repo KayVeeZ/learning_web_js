@@ -17,7 +17,7 @@ app.get('/', (req, res)=> {
 
 app.get('/dashboard', (req, res) => {
   console.log('dashboard endpoint hit', req.method);
-  res.send('hello world');
+  res.send('<h1>hello world-this is html now</h1>');
 }
 )
 
