@@ -1,7 +1,7 @@
 import express from 'express';
 import db from '../db.js';
 
-const router = express.router();
+const router = express.Router();
 
 // get all todos for logged in user
 router.get('/', (req,res) => {
