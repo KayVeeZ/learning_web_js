@@ -244,6 +244,12 @@
 
     function logout() {
         // wipe states and clear cached token
+        localStorage.removeItem('token')
+        token = null
+        authContent.style.display = 'block'
+        header.style.display = 'none'
+        nav.style.display = 'none'
+        main.style.display = 'none'
     }
 
     // CRUD LOGIC
@@ -253,6 +259,19 @@
         const response = await fetch(apiBase + 'todos', {
             headers: { 'Authorization': token }
         })
+
+        if (response.status === 401 || response.status === 403) {
+            // Invalid token, log out
+            localStorage.removeItem('token')
+            token = null
+            isLoading = false
+            authContent.style.display = 'block'
+            header.style.display = 'none'
+            nav.style.display = 'none'
+            main.style.display = 'none'
+            return
+        }
+
         const todosData = await response.json()
         todos = todosData
         isLoading = false

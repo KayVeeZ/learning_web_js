@@ -1,8 +1,10 @@
 import express from 'express';
+import cors from 'cors';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/authRoutes.js';
 import todoRoutes from './routes/todoRoutes.js'
+import authMiddleware from './middleware/authMiddleware.js';
 
 const app = express();
 const PORT = process.env.PORT || 5003;
@@ -11,6 +13,9 @@ const PORT = process.env.PORT || 5003;
 const __filename = fileURLToPath(import.meta.url);
 // get the directory name from the file path
 const __dirname = dirname(__filename);
+
+// app to use cors
+app.use(cors());
 
 // middleware to parse jason
 app.use(express.json());
@@ -28,7 +33,7 @@ app.get('/', (req, res) => {
 
 // routes
 app.use('/auth', authRoutes);
-app.use('/auth', todoRoutes);
+app.use('/auth', authMiddleware, todoRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server has started on port: ${PORT}`);
