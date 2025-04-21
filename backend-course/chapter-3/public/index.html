@@ -254,7 +254,6 @@
             headers: { 'Authorization': token }
         })
         const todosData = await response.json()
-        console.log("Fetched todos:", todosData)
         todos = todosData
         isLoading = false
         renderTodos()
