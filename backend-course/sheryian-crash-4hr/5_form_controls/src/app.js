@@ -12,13 +12,7 @@ app.use((req,res,next)=>{
     return next();
 })
 
-app.get('/',(req, res, next)=>{ //using middleware for particular routes
-    const a = 3;
-    const b = 5;
-    console.log(a+b);
-    return next();
-},
-(req,res)=>{
+app.get('/',(req,res)=>{
     console.log(req.url);
     res.render("index");
 })
