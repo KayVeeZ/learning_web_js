@@ -1,5 +1,9 @@
-import express from 'express';
+import userModel from '../models/user.js';
+import dbConnection from '../config/db.js';
+
+import express, { urlencoded } from 'express';
 import morgan from 'morgan'; // 3rd party middleware installed via 'npm i morgan'
+
 
 const app = express();
 
@@ -7,10 +11,11 @@ app.set('view engine', 'ejs');
 
 app.use(morgan('dev'));
 
-app.use((req,res,next)=>{
-    console.log("Do I know how to use middleware?");
-    return next();
-})
+app.use(express.json());
+
+app.use(urlencoded({ extended:true }));
+
+app.use(express.static('public'));
 
 app.get('/',(req,res)=>{
     console.log(req.url);
@@ -23,6 +28,27 @@ app.get('/about', (req,res)=>{
 
 app.get('/profile', (req,res)=>{
     res.render('profile');
+})
+
+app.get('/register', (req,res) => {
+  res.render('register');
+}
+);
+
+app.post('/get-form-data', (req,res)=>{
+    console.log(req.body);
+    res.send('data received');
+})
+
+app.post('/register', async (req,res)=>{
+    console.log(req.body);
+    const { username, email, password } = req.body;
+    const newUser= await userModel.create({
+        username: username,
+        email: email,
+        password: password
+    })
+    res.send(newUser);
 })
 
 

@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
+    <link rel="stylesheet" href="/assets/index.css">
 </head>
 <body>
-    <p>Test</p>
-    <a href="/about"> About page</a> <br>
-    <a href="/profile">Profile</a>
+    <form action="/get-form-data" method="post">
+        <input 
+        placeholder="Enter user name..."
+        name="username"
+        type="text">
+
+        <input 
+        placeholder="Enter email address..."
+        name="email"
+        type="text">
+
+        <input 
+        placeholder="Enter password..."
+        name="password"
+        type="password">
+        <button>Submit</button>
+    </form>
+    <script src="/assets/index.js"></script>
 </body>
 </html>
