@@ -51,6 +51,13 @@ app.post('/register', async (req,res)=>{
     res.send(newUser);
 })
 
+app.get('/get-users', (req,res)=>{
+    userModel.find().then((users) => {
+        res.send(users);
+    }        
+    );
+});
+
 
 const PORT = 5003;
 
