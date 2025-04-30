@@ -13,37 +13,58 @@ app.use(morgan('dev'));
 
 app.use(express.json());
 
-app.use(urlencoded({ extended:true }));
+app.use(urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     console.log(req.url);
     res.render("index");
 })
 
-app.get('/about', (req,res)=>{
+app.get('/about', (req, res) => {
     res.render('about');
 })
 
-app.get('/profile', (req,res)=>{
+app.get('/profile', (req, res) => {
     res.render('profile');
 })
 
-app.get('/register', (req,res) => {
-  res.render('register');
+app.get('/register', (req, res) => {
+    res.render('register');
 }
 );
 
-app.post('/get-form-data', (req,res)=>{
+app.get('/update-user', async (req, res) => {
+    await userModel.findOneAndUpdate(
+        {
+            username: 'a'
+        },
+        {
+            email: 'c@c.com'
+        }
+    );
+    res.send("User Updated");
+}
+);
+
+app.get('/delete-user',async (req,res) => {
+  await userModel.findOneAndDelete({
+    username: 'a'
+  });
+  res.send("user deleted...")
+}
+);
+
+app.post('/get-form-data', (req, res) => {
     console.log(req.body);
     res.send('data received');
 })
 
-app.post('/register', async (req,res)=>{
+app.post('/register', async (req, res) => {
     console.log(req.body);
     const { username, email, password } = req.body;
-    const newUser= await userModel.create({
+    const newUser = await userModel.create({
         username: username,
         email: email,
         password: password
@@ -51,16 +72,28 @@ app.post('/register', async (req,res)=>{
     res.send(newUser);
 })
 
-app.get('/get-users', (req,res)=>{
+app.get('/get-users', (req, res) => {
     userModel.find().then((users) => {
         res.send(users);
-    }        
+    }
     );
 });
+
+app.get('/get-one-user', (req, res) => {
+    userModel.findOne({
+        username: 'b'
+    }).then(
+        (user) => {
+            res.send(user)
+        }
+
+    );
+}
+);
 
 
 const PORT = 5003;
 
-app.listen(PORT, ()=> {
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
