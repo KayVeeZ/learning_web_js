@@ -1,5 +1,5 @@
 {
-  "name": "5_form_controls",
+  "name": "6_google_drive_clone",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -14,8 +14,6 @@
   "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^5.1.0",
-    "mongoose": "^8.13.2",
-    "morgan": "^1.10.0"
+    "express": "^5.1.0"
   }
 }
