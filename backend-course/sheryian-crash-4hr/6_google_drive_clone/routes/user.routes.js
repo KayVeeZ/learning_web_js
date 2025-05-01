@@ -80,7 +80,7 @@ router.post('/login',
       })
     }
 
-    const isMatch = bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch)
       {
@@ -96,7 +96,8 @@ router.post('/login',
     }, process.env.JWT_SECRET);
 
     res.cookie('token', token);
-    res.send("Logged In");
+    res.send(`Logged In <br>
+      <a href="/">Home</a>`);
 }
 )
 export default router;
