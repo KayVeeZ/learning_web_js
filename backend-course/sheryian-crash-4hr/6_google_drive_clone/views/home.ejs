@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+    />
     <title>Document</title>
 </head>
 
@@ -16,7 +20,9 @@
         </button>
 
         <div class="pop hidden backdrop-blur fixed top-0 left-0 h-screen w-screen flex items-center justify-center">
-            <button class="rounded-full font-bold bg-gray-100 hover:bg-red-500 text-black hover:text-gray-100 dark:text-white dark:hover:text-gray-800 dark:bg-gray-600 hover:outline-1 hover:outline-amber-600 dark:hover:outline-amber-200 p-2 right-133 top-34 fixed transition duration-200" onclick="hidePopUp()">x</button>
+            <button
+                class="rounded-full font-bold bg-gray-100 hover:bg-red-500 text-black hover:text-gray-100 dark:text-white dark:hover:text-gray-800 dark:bg-gray-600 hover:outline-1 hover:outline-amber-600 dark:hover:outline-amber-200 p-2 right-133 top-34 fixed transition duration-200"
+                onclick="hidePopUp()">x</button>
             <form action="/upload" method="post" enctype="multipart/form-data">
                 <div class="flex items-center justify-center w-96">
                     <label for="dropzone-file"
@@ -36,15 +42,20 @@
                         </div>
                         <input id="dropzone-file" type="file" class="hidden" name="file" />
                     </label>
-                </div><br/>
-                <button class="bg-gray-100 hover:bg-gray-300 text-black dark:text-white dark:bg-gray-600 dark:hover:bg-gray-700 rounded p-2">Upload File</button>
+                </div><br />
+                <button
+                    class="bg-gray-100 hover:bg-gray-300 text-black dark:text-white dark:bg-gray-600 dark:hover:bg-gray-700 rounded p-2">Upload
+                    File</button>
             </form>
         </div>
         <div class="mt-3 files flex flex-col gap-2">
-            <div class="cursor-pointer rounded-md bg-gray-300">
-                <h1>Filename</h1>
+            <% files.forEach((file)=>{ %>
+                <div class="cursor-pointer rounded-md bg-gray-300 flex justify-between">
+                    <h1><%= file.originalname %></h1>
+                    <a href="/download/<%= file.path %>" class="text-blue-500 hover:text-blue-700" download="<%= file.originalname %>"><i class="ri-file-download-line"></i></a>
+                </div>
+            <% }) %>
             </div>
-        </div>
     </main>
 
 
