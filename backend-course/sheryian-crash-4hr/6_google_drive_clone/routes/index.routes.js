@@ -5,6 +5,7 @@ import upload from '../src/middleware/uploadMiddleware.js';
 import fileModel from '../src/models/files.model.js'
 import authMiddleware from '../src/middleware/auth.js';
 import { console } from 'inspector/promises';
+import axios from 'axios';
 
 const router = express.Router();
 
@@ -58,37 +59,74 @@ router.post('/upload', authMiddleware, upload.single('file'), (req, res) => {
 
 
 router.get('/download/:path', authMiddleware, async (req, res) => {
-  console.log('Download route hit');  // Log to verify that the route is hit
-  
+  console.log('Download route hit');
+
   const loggedInUserId = req.user.userId;
-  const path = req.params.path;  // Get the S3 key from URL parameter
-
-  console.log('Requested file path:', path);
-
-  // Find the file in the database using the stored S3 key (not the local path)
-  const file = await fileModel.findOne({
-    user: loggedInUserId,
-    path: path,  // Match the S3 key
-  });
-
-  if (!file) {
-    return res.status(401).json({ message: "Unauthorized access to the file." });
-  }
+  const requestedFilePath = req.params.path;
+  console.log('Requested file path:', requestedFilePath);
 
   try {
-    // Generate a signed URL to allow temporary access to the file from S3
-    console.log('Key for signed URL:', file.path);
-    const signedUrl = await s3.getSignedUrlPromise('getObject', {
-      Bucket: process.env.FILEBASE_BUCKET,
-      Key: file.path, // Use the S3 key stored in MongoDB
-      Expires: 3600,  // URL expiration (1 hour)
-    });
+      const file = await fileModel.findOne({
+          user: loggedInUserId,
+          path: requestedFilePath,
+      });
 
-    // Redirect the user to the signed URL for file download
-    res.redirect(signedUrl);
-  } catch (err) {
-    console.error('Error generating signed URL:', err);
-    res.status(500).json({ error: 'Failed to generate signed URL.' });
+      if (!file) {
+          return res.status(401).json({ success: false, error: 'Unauthorized access to the file.' });
+      }
+
+      console.log('Key for signed URL:', file.path);
+      const signedUrl = await s3.getSignedUrlPromise('getObject', {
+          Bucket: process.env.FILEBASE_BUCKET,
+          Key: file.path,
+          Expires: 3600,
+      });
+
+      console.log('Generated signed URL:', signedUrl);
+
+      // Set the Content-Disposition header to force download
+      res.setHeader('Content-Disposition', `attachment; filename="${file.originalname}"`);
+      res.redirect(signedUrl);
+
+  } catch (error) {
+      console.error('Error generating signed URL:', error);
+      res.status(500).json({ success: false, error: 'Failed to generate signed URL.' });
+  }
+});
+
+router.post('/delete/:fileId', authMiddleware, async (req, res) => {
+  const fileId = req.params.fileId;
+  const userId = req.user.userId;
+
+  try {
+      // Find the file in the database
+      const file = await fileModel.findById(fileId);
+
+      if (!file) {
+          return res.status(404).json({ success: false, error: 'File not found.' });
+      }
+
+      // Verify that the user owns the file
+      if (file.user.toString() !== userId) {
+          return res.status(403).json({ success: false, error: 'Unauthorized to delete this file.' });
+      }
+
+      // Delete the file from Filebase
+      const deleteParams = {
+          Bucket: process.env.FILEBASE_BUCKET,
+          Key: file.path, // Assuming 'file.path' stores the S3 key (file.filename)
+      };
+
+      await s3.deleteObject(deleteParams).promise();
+
+      // Delete the file record from MongoDB
+      await fileModel.findByIdAndDelete(fileId);
+
+      res.json({ success: true, message: 'File deleted successfully.' });
+
+  } catch (error) {
+      console.error('Error deleting file:', error);
+      res.status(500).json({ success: false, error: 'Failed to delete file.' });
   }
 });
 
