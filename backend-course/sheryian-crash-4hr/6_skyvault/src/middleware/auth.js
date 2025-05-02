@@ -4,9 +4,8 @@ function auth(req,res,next) {
     const token = req.cookies.token;
 
     if(!token) {
-        return res.status(401).json({
-            message: "Unauthorised Entry."
-        });
+        res.status(401);
+        return res.redirect("/unauthorised");
     }
 
     try {
@@ -16,9 +15,8 @@ function auth(req,res,next) {
 
         return next();
     } catch(err) {
-        return res.status(401).json({
-            message: "Unauthorised Entry."
-        });
+        res.status(401);
+        return res.redirect("/unauthorised");
 
     }
 }

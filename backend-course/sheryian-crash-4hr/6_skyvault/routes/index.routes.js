@@ -5,9 +5,13 @@ import upload from '../src/middleware/uploadMiddleware.js';
 import fileModel from '../src/models/files.model.js'
 import authMiddleware from '../src/middleware/auth.js';
 import { console } from 'inspector/promises';
-import axios from 'axios';
 
 const router = express.Router();
+
+router.get('/unauthorised',(req,res) => {
+  res.render("unauthorised");
+}
+)
 
 router.get('/', authMiddleware, async (req, res) => {
 
