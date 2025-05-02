@@ -27,7 +27,5 @@ body{
 #box3 {
     height: 300px;
     width: 300px;
-    background-color: lightblue;
-    /* border-radius:"100%";
-    scale: 0.5 */
+    background-color: royalblue;
 }
