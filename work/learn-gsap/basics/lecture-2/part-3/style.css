@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:"Gilroy-Regular";
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#page1 {
+    height: 100%;
+    width: 100%;
+    background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#page2 {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(122, 193, 217);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+#page3 {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(67, 180, 217);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+#box {
+    height: 300px;
+    width: 300px;
+    background-color: red;
+}
