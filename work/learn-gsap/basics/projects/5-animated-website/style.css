@@ -211,3 +211,20 @@ nav button {
     font-weight: 900;
     border-radius: 50%;
 }
+
+.black {
+    background-color: black;
+}
+
+.black i {
+    background-color: white !important; 
+    color: black !important;
+}
+
+.black h4 {
+    color: white !important;
+}
+
+.black h2 {
+    background-color: white !important;
+}
