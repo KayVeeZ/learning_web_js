@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #fff;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #brain {
+            height: 100vh;
+            width: 100%
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="brain">
+
+
+        <svg viewBox="120 500 2000 1500" xmlns="http://www.w3.org/2000/svg">
+            <line x1="160" y1="1536" x2="600" y2="1400" stroke="#888" stroke-width="2" />
+            <circle cx="160" cy="1536" r="12" fill="red" />
+
+            <line x1="600" y1="1400" x2="1000" y2="1440" stroke="#888" stroke-width="2" />
+            <circle cx="600" cy="1400" r="12" fill="red" />
+
+            <line x1="1000" y1="1440" x2="1280" y2="1600" stroke="#888" stroke-width="2" />
+            <line x1="1000" y1="1440" x2="1320" y2="1280" stroke="#888" stroke-width="2" />
+            <circle cx="1000" cy="1440" r="12" fill="red" />
+
+            <line x1="1280" y1="1600" x2="1440" y2="1120" stroke="#888" stroke-width="2" />
+            <line x1="1280" y1="1600" x2="1600" y2="1600" stroke="#888" stroke-width="2" />
+            <circle cx="1280" cy="1600" r="12" fill="red" />
+
+            <line name="alpha2gamma" x1="1090" y1="1265" x2="1320" y2="1280" stroke="#888" stroke-width="2" />
+            <line x1="1320" y1="1280" x2="1440" y2="1120" stroke="#888" stroke-width="2" />
+            <circle name="gamma-connected from alpha" cx="1320" cy="1280" r="12" fill="red" />
+
+            <!-- text was here above the above circle -->
+
+            <line x1="1440" y1="1120" x2="1600" y2="720" stroke="#888" stroke-width="2" />
+            <circle cx="1440" cy="1120" r="12" fill="red" />
+
+            <line name="a2-to-a1" x1="1200" y1="680" x2="1600" y2="720" stroke="#888" stroke-width="2" />
+            <circle name="a1" cx="1600" cy="720" r="12" fill="red" />
+
+            <line name="a3-to-a2" x1="800" y1="696" x2="1200" y2="680" stroke="#888" stroke-width="2" />
+            <circle name="a2-connects to a1" cx="1200" cy="680" r="12" fill="red" />
+
+            <path name="a4-to-a3" d="M 600 864 Q 800 800 800 696" stroke="#888" fill="transparent" stroke-width="2" />
+            <path name="a5-to-a3" d="M 560 680 Q 720 560 800 696" stroke="#888" fill="transparent" stroke-width="2" />
+            <circle name="a3-connects to a2" cx="800" cy="696" r="12" fill="red" />
+            <!-- bifurcation here -->
+            <circle name="a4-connects to a3" cx="600" cy="864" r="12" fill="red" />
+            <path name="a6-to-a5" d="M 400 864 Q 560 800 560 680" stroke="#888" fill="transparent" stroke-width="2" />
+            <circle name="a5-connects to a3" cx="560" cy="680" r="12" fill="red" />
+            <circle name="a6-connects to a5" cx="400" cy="864" r="12" fill="red" />
+
+            <path d="M 1600 1600 Q 1840 1440 1584 1280" stroke="#888" fill="transparent" stroke-width="2" />
+            <circle cx="1600" cy="1600" r="12" fill="red" />
+
+            <line name="e2a" x1="1720" y1="1000" x2="1584" y2="1280" stroke="#888" stroke-width="2" />
+            <circle name="e-connects to a" cx="1720" cy="1000" r="12" fill="red" />
+
+            <path name="b2a" d="M 1800 1088 Q 1640 1200 1584 1280" stroke="#888" fill="transparent" stroke-width="2" />
+            <line name="c2a" x1="2000" y1="1120" x2="1584" y2="1280" stroke="#888" stroke-width="2" />
+            <line name="d2a" x1="2000" y1="1240" x2="1584" y2="1280" stroke="#888" stroke-width="2" />
+            <circle name="receiver at end of text-name is a" cx="1584" cy="1280" r="12" fill="red" />
+
+            <!-- below circle path to above -->
+            <circle name="b-connects to a" cx="1800" cy="1088" r="12" fill="red" />
+            <line name="f2c" x1="1960" y1="920" x2="2000" y2="1120" stroke="#888" stroke-width="2" />
+            <circle name="c-connects to a" cx="2000" cy="1120" r="12" fill="red" />
+
+            <path name="d2h" d="M 2000 1240 Q 2080 1440 1864 1440" stroke="#888" fill="transparent" stroke-width="2" />
+            <circle name="d-connects to a" cx="2000" cy="1240" r="12" fill="red" />
+
+            <!-- <path name="h2i" d="M 1864 1440 Q 1760 1760 2000 1600" stroke="#888" fill="transparent" stroke-width="2" /> -->
+             <line name="h2i" x1="1864" y1="1440" x2="2000" y2="1600" stroke="#888" stroke-width="2" />
+            <circle name="h-connects to d" cx="1864" cy="1440" r="12" fill="red" />
+            <circle name="i-connects to h" cx="2000" cy="1600" r="12" fill="red" />
+
+            <line name="g2f" x1="1800" y1="800" x2="1960" y2="920" stroke="#888" stroke-width="2" />
+            <circle name="f-connects to c" cx="1960" cy="920" r="12" fill="red" />
+            <circle name="g-connects to f" cx="1800" cy="800" r="12" fill="red" />
+
+
+            
+            <!-- last few nodes connects to text -->
+             
+            <line name="delta2alpha" x1="900" y1="1265" x2="1090" y2="1265" stroke="#888" stroke-width="2" />
+            <line name="ab2text" x1="600" y1="1200" x2="900" y2="1265" stroke="#888" stroke-width="2" />
+             <circle name="ab-connects to text" cx="600" cy="1200" r="12" fill="red" />
+             <circle name="delta-underneath text" cx="900" cy="1265" r="12" fill="red" />
+
+
+             <line name="bc2text" x1="900" y1="1100" x2="1090" y2="1265" stroke="#888" stroke-width="2" />
+             <line name="c1-to-bc" x1="750" y1="1060" x2="900" y2="1100" stroke="#888" stroke-width="2" />
+             <circle name="bc-connects to text" cx="900" cy="1100" r="12" fill="red" />
+             <circle name="alpha-underneath text" cx="1090" cy="1265" r="12" fill="red" />
+             
+             <line name="c2-to-c1" x1="600" y1="1140" x2="750" y2="1060" stroke="#888" stroke-width="2" />
+             <circle name="c1-connects to bc" cx="750" cy="1060" r="12" fill="red" />
+             <circle name="c2-connects to c1" cx="600" cy="1140" r="12" fill="red" />
+
+             <text id="caption" x="800" y="1280" font-family="Arial" font-size="50" fill="blue" font-weight="bold">
+                Studying the Brain to understand the Brain
+            </text>
+
+        </svg>
+
+    </div>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const text = document.getElementById("caption");
+            const svg = text.ownerSVGElement;
+
+            // Get text dimensions
+            const bbox = text.getBBox();
+            const padding = 10;
+
+            // Create rectangle
+            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", bbox.x - padding);
+            rect.setAttribute("y", bbox.y - padding);
+            rect.setAttribute("width", bbox.width + 2 * padding);
+            rect.setAttribute("height", bbox.height + 2 * padding);
+            rect.setAttribute("fill", "red");
+            rect.setAttribute("rx", "15");  // Horizontal corner radius
+            rect.setAttribute("ry", "15");  // Vertical corner radius
+
+            // Insert rectangle before the text so it appears behind
+            svg.insertBefore(rect, text);
+        });
+    </script>
+</body>
+
+</html>
